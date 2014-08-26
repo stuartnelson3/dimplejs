@@ -10,15 +10,14 @@
         <script src="http://dimplejs.org/lib/d3.v3.4.8.js"></script>
         <script src="http://dimplejs.org/dist/dimple.v2.1.0.min.js"></script>
         <script type="text/javascript">
-          var svg = dimple.newSvg("#chartContainer", 960, 680);
+          var svg = dimple.newSvg("#chartContainer", 660, 400);
           d3.csv("/data.csv", function (data) {
-              var myChart = new dimple.chart(svg, data);
-            myChart.setBounds(75, 30, 860, 600)
+            var myChart = new dimple.chart(svg, data);
+            myChart.setBounds(60, 30, 500, 330)
             myChart.addMeasureAxis("x", "Donations");
-            var y = myChart.addCategoryAxis("y", "Deaths");
-            y.addOrderRule("Deaths");
-            myChart.addSeries("Disease", dimple.plot.bar);
-            myChart.addLegend(640, 40, 380, 50, "right");
+            myChart.addMeasureAxis("y", "Deaths");
+            myChart.addSeries("Disease", dimple.plot.bubble);
+            myChart.addLegend(270, 40, 380, 50, "right");
             myChart.draw();
           });
         </script>
